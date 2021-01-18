@@ -1,0 +1,23 @@
+{
+  "name": "my-warehouse-app",
+  "version": "1.0.0",
+  "description": "Warehouse Reporting Application",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js --exec"
+  },
+  "keywords": [
+    "reporting"
+  ],
+  "author": "Cody Vela",
+  "license": "MIT",
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.0",
+    "cors": "^2.8.5",
+    "dateformat": "^4.3.1",
+    "express": "^4.17.1",
+    "nodemailer": "^6.4.17",
+    "nodemon": "^2.0.6"
+  },
+  "devDependencies": {}
+}

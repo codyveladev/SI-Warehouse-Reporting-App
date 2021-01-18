@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+.label {
+  font-size: 11px !important;
+  font-family: "Lato", sans-serif;
+}
+
+$primary: #00204a;
+$secondary: #717073;
+$info: #f9f9f9;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+#brand-text
+{
+  font-family: "Montserrat", sans-serif;
+}
+
+p{
+  font-family: "Lato", sans-serif;
+}
+
+@import "~bootstrap/scss/bootstrap.scss";
