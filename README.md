@@ -1,6 +1,6 @@
 # SI-Warehouse-Reporting-App
 
-# Development commands 
+# Forking and Development commands 
 ## Install
 Backend: 
 ```npm install``` 
