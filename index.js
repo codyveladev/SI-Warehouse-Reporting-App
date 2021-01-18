@@ -8,26 +8,34 @@ sgMail.setApiKey(
   "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"
 );
 
-
-
 //Date format package
 const dateFormat = require("dateformat");
-
+//Localhost 8080
 const port = 8080;
 
+//Express usage
 app.use(express.json());
 app.use(cors());
 
-// app.use(express.static(path.join(__dirname, './client/src')))
-
+//Test route 
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
+/**
+ * @route POST /report
+ * @params body will be the data from the input form on the frontend. 
+ * @desc this route will take the data from the frontend and generate an 
+ * an email with a table based on the data that is passed in. 
+ * @note this can route can be better in readability if we create some
+ * helper functions. 
+ */
 
 app.post("/report", async (req, res) => {
   // Store the body params into a temporary varibable
   let reqDataArray = req.body;
 
+  //Styling for the table created in the email. 
   let inlineStyling = `<head>
   <style>
     table {
@@ -92,33 +100,30 @@ app.post("/report", async (req, res) => {
   </html>
   `;
 
-  console.log(template);
-
-  res.send(template)
-
   //Get the current time and format it to be put in the subject field
   let currentTime = new Date();
   let formattedTime = dateFormat(currentTime, "mm/dd/yyyy");
 
   //Create the message following the send-grid API
+  //More information on this can be found in the SendGrid docs
+  //A link to the documenation can be found in the readme. 
   const msg = {
-    //Add this to the array come presentation time.
-    /* Jessica.Gallio@spitzerind.com, Lonnie.Vela@spitzerind.com, Rigo.Montes@spitzerind.com, Diana.Fong@spitzerind.com, Chris.Schellhaas@spitzerind.com, Willie.Vela@spitzerind.com */
-    to: ["c_v204@txstate.edu", "Jessica.Gallio@spitzerind.com", "Lonnie.Vela@spitzerind.com", "Rigo.Montes@spitzerind.com", "Diana.Fong@spitzerind.com", "Chris.Schellhaas@spitzerind.com", "Willie.Vela@spitzerind.com", "Will.Essner@spitzerind.com"],
+    to: ["c_v204@txstate.edu"], //Can have many users
     from: {
       name: "DEMO PRESENTATION",
       email: "codyvela13@gmail.com",
     },
     subject: `Items Received ${formattedTime}`,
-    html: template,
+    html: template, //the HTML body of the template
   };
 
   //Create the message
   sgMail
-    .send(msg)
+    .send(msg) //send the message
     .then(() => res.send(200))
     .catch((error) => res.send(error));
 });
+
 
 app.listen(port, () => {
   console.log(`Server started on Port: ${port}`);
