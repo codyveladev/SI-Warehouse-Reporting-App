@@ -8,6 +8,7 @@ import AlertMsg from "../Layout/AlertMsg";
 const axios = require("axios");
 
 export default function FormField() {
+  //Set the intial form state
   const [inputFields, setInputFields] = useState([
     {
       id: uuidv4(),
@@ -21,13 +22,16 @@ export default function FormField() {
     },
   ]);
 
+  //To be used for conformation message on successful submit
   const [msg, setMessage] = useState("");
 
+  //Bool variable to be used to hide or show the modal.
   const [show, setShow] = useState(false);
-
+  //Helper function for the show state
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  //Makes the POST call to the server
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("InputFields", inputFields);
@@ -48,11 +52,13 @@ export default function FormField() {
             alertTitle="Success!"
             alertBody="Report has been emailed!"
           ></AlertMsg>
-
         );
         setMessage(displaySuccessMsg);
         handleClose();
-        setTimeout(() => {setMessage(""); window.location.reload()}, 3000);
+        setTimeout(() => {
+          setMessage("");
+          window.location.reload();
+        }, 3000);
       }
     } catch (error) {
       let displayErrorMsg = (
@@ -67,7 +73,7 @@ export default function FormField() {
       setTimeout(() => setMessage(""), 3000);
     }
   };
-
+  //React form helper function
   const handleChangeInput = (id, event) => {
     const newInputFields = inputFields.map((i) => {
       if (id === i.id) {
@@ -78,7 +84,7 @@ export default function FormField() {
 
     setInputFields(newInputFields);
   };
-
+  //React form helper function
   const handleAddFields = () => {
     setInputFields([
       ...inputFields,
@@ -94,7 +100,7 @@ export default function FormField() {
       },
     ]);
   };
-
+  //React form helper function
   const handleRemoveFields = (id) => {
     const values = [...inputFields];
     values.splice(
