@@ -31,6 +31,7 @@ The backend is a simple Express.js server with one main route currently
 # POST /reports (Route)
 
 Body Params: inputFields which is take from the frontend react application when the form is submitted. 
+
 inputFields object (Example): 
 ```
 {
