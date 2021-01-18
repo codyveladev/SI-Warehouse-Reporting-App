@@ -1,5 +1,20 @@
 # SI-Warehouse-Reporting-App
 
+# Development commands 
+## Install
+Backend: 
+```npm install``` 
+
+Frontend
+```cd client npm install ```
+## Start 
+Backend: 
+```npm start``` 
+
+Frontend
+```cd client npm start```
+
+
 # Frontend
 The front end was built creating React.js and it is a simple one page application. 
 The frontend of this application can be viewed in the 'client' folder
