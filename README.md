@@ -23,6 +23,7 @@ There are currently 3 pages
 - Dashboard 
 - Shipping 
 - Receiving
+
 Source code for those can be found in client>src>components>pages 
 
 # Backend 
