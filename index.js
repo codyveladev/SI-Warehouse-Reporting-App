@@ -1,12 +1,13 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+require("dotenv").config()
 
 
 //Send Grid API
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(
-  "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"
+  process.env.API_KEY
 );
 
 //Date format package
